@@ -32,7 +32,13 @@ int main()
         }
         print_grid(tictactoegrid);
     }
-    std::cout << player << " wins!" << std::endl;
+    if (player == 'O') {
+        std::cout << 'X';
+    }
+    else {
+        std::cout << 'O';
+    }
+    std::cout << " wins!" << std::endl;
 }
 
 void print_grid(char grid[3][3])
