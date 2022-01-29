@@ -16,7 +16,7 @@ int main()
         std::cin >> row;
         std::cout << "Enter a column (0-2): ";
         std::cin >> column;
-        tictactoegrid[row][column] = player;
+        tictactoegrid[row][column]= (tictactoegrid[row][column] != '-') ? tictactoegrid[row][column] : player;
         player = (player == 'X') ? 'O' : 'X';
         print_grid(tictactoegrid);
     }
