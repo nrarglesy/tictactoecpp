@@ -7,19 +7,32 @@ int main()
 {
     char tictactoegrid[3][3] = { {'-', '-', '-'}, {'-', '-', '-'}, {'-', '-', '-'} };
     char player = 'X';
+    bool invalidplacement = false;
     int row;
     int column;
     print_grid(tictactoegrid);
     while (!checkwin(tictactoegrid)) {
+        invalidplacement = false;
         std::cout << "Current player: " << player << std::endl;
         std::cout << "Enter a row (0-2): ";
         std::cin >> row;
         std::cout << "Enter a column (0-2): ";
         std::cin >> column;
-        tictactoegrid[row][column]= (tictactoegrid[row][column] != '-') ? tictactoegrid[row][column] : player;
-        player = (player == 'X') ? 'O' : 'X';
+        if (tictactoegrid[row][column] == '-') {
+            tictactoegrid[row][column] = player;
+        }
+        else {
+            invalidplacement = true;
+        }
+        if (!invalidplacement) {
+            player = (player == 'X') ? 'O' : 'X';
+        }
+        else {
+            std::cout << "Position already taken, try again." << std::endl;
+        }
         print_grid(tictactoegrid);
     }
+    std::cout << player << " wins!" << std::endl;
 }
 
 void print_grid(char grid[3][3])
